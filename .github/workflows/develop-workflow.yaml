@@ -42,11 +42,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Unit/Integration Test
-        if: success()
-        working-directory: main
-        run: mvn -B verify
-
       - name: Package
         working-directory: main
         run: mvn package -DskipTests
