@@ -1,4 +1,4 @@
-FROM ghcr.io/namnextx/java-based-image:v1.0.0
+FROM eclipse-temurin:11-jre-alpine
 
 ARG JAR_FILE=target/*.jar
 
