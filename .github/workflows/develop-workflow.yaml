@@ -77,3 +77,26 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: JAVA_OPTS=${{ secrets.DOCKER_JAVA_OPTIONS }}
+      - name: Checkout k8s-helm-deployment Repo
+        uses: actions/checkout@v2
+        if: ${{ success() }}
+        with:
+          repository: namnextx/k8s-helm-deployment
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          persist-credentials: true
+          ref: dev
+          path: k8s-helm-deployment
+      - name: Update Image Version in the related HelmChart values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          workDir: k8s-helm-deployment
+          repository: namnextx/k8s-helm-deployment
+          token: ${{ secrets.GITHUB_TOKEN }}
+          valueFile: 'servicesvalues/k8s-java-application-chart.values.yaml'
+          propertyPath: 'k8s-helm.image.tag'
+          value: ${{ steps.meta.outputs.version }}
+          branch: develop
+          createPR: false
+          updateFile: true
+          message: 'Update Image Version to ${{ steps.meta.outputs.version }} to ${{ github.event.repository.name }}'
