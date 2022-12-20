@@ -1,7 +1,8 @@
 package com.example.controller;
 
-import jdk.jfr.Registered;
+import org.springframework.web.bind.annotation.RestController;
 
-@Registered
+@RestController
 public class TestController {
+
 }
