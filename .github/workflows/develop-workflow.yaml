@@ -91,7 +91,7 @@ jobs:
         with:
           workDir: k8s-helm-deployment
           repository: namnextx/k8s-helm-deployment
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.K8S_GITHUB_TOKEN  }}
           valueFile: 'dev/k8s-java-application-chart.values.yaml'
           propertyPath: 'image.tag'
           value: ${{ steps.meta.outputs.version }}
