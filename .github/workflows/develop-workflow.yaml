@@ -93,7 +93,7 @@ jobs:
           repository: namnextx/k8s-helm-deployment
           token: ${{ secrets.K8S_GITHUB_TOKEN  }}
           valueFile: 'dev/k8s-java-application-chart.values.yaml'
-          propertyPath: 'image.tag'
+          propertyPath: 'java-application-chart.image.tag'
           value: ${{ steps.meta.outputs.version }}
           branch: develop
           createPR: false
