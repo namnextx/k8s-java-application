@@ -12,7 +12,7 @@ public class TestController {
 
   @GetMapping
   public ResponseEntity<String> getTestResponse() {
-    String responseMessage = "Hello google cloud";
+    String responseMessage = "Hello google cloud, my name is johnny";
     return ResponseEntity.ok(responseMessage);
   }
 }
