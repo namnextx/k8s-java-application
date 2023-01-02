@@ -16,7 +16,7 @@ public class ProductController {
   public ResponseEntity<ProductDto> getProduct(@PathVariable("productId") long productId) {
     ProductDto productDto = new ProductDto();
     productDto.setProductId(productId);
-    productDto.setProductName("Mouse");
+    productDto.setProductName("Mouse" + productId);
     return ResponseEntity.ok(productDto);
   }
 }
